@@ -1,4 +1,5 @@
 import csv
+import matplotlib.pyplot as plt
 
 categories = []
 canada = []
@@ -29,6 +30,7 @@ gold_1972 = []
 gold_2002 = []
 gold_2014 = []
 
+
 for medal in canada:
 	if medal[0] == 1924 and medal[3] =="Gold":
 		gold_1924.append(medal)
@@ -54,6 +56,43 @@ for medal in canada:
 print('canada won', len(gold_1924), 'gold medals in 1924')
 print('canada won', len(gold_1948), 'gold medals in 2014')
 print('processed', line_count, 'rows of data')
+
+men = []
+women = []
+
+for medal in canada:
+    if medal[1] == "Men":
+       men.append(medal)
+
+for medal in canada:
+    if medal[1] == "Women":
+       women.append(medal)
+
+
+print('men won', len(men), 'gold medals in 2014')
+print('women won', len(women), 'gold medals in 2014')
+
+totalMedals = len(men) + len(women)
+
+men_procentage = int(len(men) / totalMedals * 100)
+women_procentage = int(len(women) / totalMedals * 100)
+
+print('processed', line_count, 'line of data.Total medals', totalMedals)
+
+labels = "Men", "Women", 
+sizes = [men_procentage, women_procentage,]
+colors = ['blue', 'pink']
+explode = (0.1, 0.1)
+
+plt.pie(sizes, explode=explode, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
+
+plt.axis('equal')
+plt.legend(labels, loc=1)
+plt.title(" Medal wins - historic medal counts")
+plt.xlabel("Medal Count from 2014 men vs women")
+plt.show()
+
+
 
 # filter 2014 based on gender
 
