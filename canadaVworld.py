@@ -96,5 +96,5 @@ plt.show()
 
 # filter 2014 based on gender
 
-# pie chart man vs women
+# pie chart men vs women
 # how many medals for each as a precentage of the total		   		     		     		     		 
